@@ -5,3 +5,10 @@ export async function fetchStock(ticker) {
   }
   return response.json()
 }
+
+export async function searchStocks(query) {
+  if (!query || query.length < 2) return []
+  const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`)
+  if (!response.ok) return []
+  return response.json()
+}

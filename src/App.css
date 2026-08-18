@@ -170,3 +170,108 @@ body {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
+
+.add-stock-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.add-stock-form input,
+.add-stock-form select {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.add-stock-form button {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-stock-form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error-message {
+  color: var(--color-negative);
+}
+
+.delete-button {
+  background: none;
+  border: 1px solid var(--color-negative);
+  color: var(--color-negative);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stock-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticker-input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.ticker-input-wrapper input {
+  width: 100%;
+}
+
+.ticker-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  margin-top: 0.25rem;
+  padding: 0;
+  list-style: none;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.ticker-suggestions li {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  border-top: none;
+}
+
+.ticker-suggestions li.highlighted,
+.ticker-suggestions li:hover {
+  background: rgba(201, 162, 39, 0.15);
+}
+
+.ticker-suggestions .exchange {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}

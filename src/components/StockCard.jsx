@@ -4,7 +4,7 @@ import { getRecommendation } from '../utils/recommendation'
 import { estimateParameters, runSimulation, computePercentiles, probabilityAboveCurrent } from '../utils/simulation'
 import PriceSimulation from './PriceSimulation'
 
-function StockCard({ ticker, name, currency, totalQuantity, gak, purchases }) {
+function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDelete }) {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
@@ -50,14 +50,20 @@ function StockCard({ ticker, name, currency, totalQuantity, gak, purchases }) {
             <details>
               <summary>Se de enkelte køb ({purchases.length})</summary>
               <ul>
-                {purchases.map((p, i) => (
-                  <li key={i}>{p.buyDate}: {p.quantity} stk. à {p.buyPrice} {currency}</li>
+                {purchases.map(p => (
+                  <li key={p.id}>
+                    <span>{p.buyDate}: {p.quantity} stk. à {p.buyPrice} {currency}</span>
+                    <button className="delete-button" onClick={() => onDelete(p.id)}>Slet</button>
+                  </li>
                 ))}
               </ul>
             </details>
           </>
         ) : (
-          <p>Indkøbspris: {gak.toFixed(2)} {currency}</p>
+          <p>
+            <span>Indkøbspris: {gak.toFixed(2)} {currency}</span>
+            <button className="delete-button" onClick={() => onDelete(purchases[0].id)}>Slet</button>
+          </p>
         )}
         <p className={gainPercent >= 0 ? 'gain-positive' : 'gain-negative'}>
           Afkast: {gainPercent.toFixed(1)}%
