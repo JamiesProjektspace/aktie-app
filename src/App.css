@@ -275,3 +275,17 @@ body {
   color: var(--color-muted);
   font-size: 0.75rem;
 }
+
+.purchase-management {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.purchase-management-label {
+  font-family: var(--font-body) !important;
+  color: var(--color-muted) !important;
+  font-size: 0.8rem;
+  margin: 0 0 0.5rem !important;
+  display: block !important;
+}

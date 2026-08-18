@@ -45,25 +45,9 @@ function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDe
         <p>Aktuel kurs: {data.currentPrice} {currency}</p>
         <p>Antal aktier: {totalQuantity}</p>
         {purchases.length > 1 ? (
-          <>
-            <p>GAK: {gak.toFixed(2)} {currency}</p>
-            <details>
-              <summary>Se de enkelte køb ({purchases.length})</summary>
-              <ul>
-                {purchases.map(p => (
-                  <li key={p.id}>
-                    <span>{p.buyDate}: {p.quantity} stk. à {p.buyPrice} {currency}</span>
-                    <button className="delete-button" onClick={() => onDelete(p.id)}>Slet</button>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          </>
+          <p>GAK: {gak.toFixed(2)} {currency}</p>
         ) : (
-          <p>
-            <span>Indkøbspris: {gak.toFixed(2)} {currency}</span>
-            <button className="delete-button" onClick={() => onDelete(purchases[0].id)}>Slet</button>
-          </p>
+          <p>Indkøbspris: {gak.toFixed(2)} {currency}</p>
         )}
         <p className={gainPercent >= 0 ? 'gain-positive' : 'gain-negative'}>
           Afkast: {gainPercent.toFixed(1)}%
@@ -81,6 +65,18 @@ function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDe
           final={simulation.final}
           currency={currency}
         />
+
+        <div className="purchase-management">
+          <p className="purchase-management-label">Køb ({purchases.length})</p>
+          <ul>
+            {purchases.map(p => (
+              <li key={p.id}>
+                <span>{p.buyDate}: {p.quantity} stk. à {p.buyPrice} {currency}</span>
+                <button className="delete-button" onClick={() => onDelete(p.id)}>Slet</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </details>
     </div>
   )
