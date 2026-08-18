@@ -7,5 +7,12 @@
   { "ticker": "RGTI", "name": "Rigetti Computing", "buyPrice": 10.00, "quantity": 69, "buyDate": "2025-01-17", "currency": "USD" },
   { "ticker": "SPIR", "name": "Spirent Communications", "buyPrice": 8.88, "quantity": 75, "buyDate": "2023-08-31", "currency": "USD" },
   { "ticker": "SPIR", "name": "Spirent Communications", "buyPrice": 5.00, "quantity": 25, "buyDate": "2023-09-21", "currency": "USD" },
+  { "ticker": "GME", "name": "GameStop Corp", "buyPrice": 19.9, "quantity": 10, "buyDate": "2024-09-18", "currency": "USD" },
+  { "ticker": "GME", "name": "GameStop Corp", "buyPrice": 20.0, "quantity": 10, "buyDate": "2024-09-11", "currency": "USD" },
+  { "ticker": "GME", "name": "GameStop Corp", "buyPrice": 20.0, "quantity": 10, "buyDate": "2024-08-28", "currency": "USD" },
+  { "ticker": "EMB.ST", "name": "EMB Mission Bound AB (publ)", "buyPrice": 0.4, "quantity": 1000, "buyDate": "2024-07-15", "currency": "SEK" },
+  { "ticker": "EMB.ST", "name": "EMB Mission Bound AB (publ)", "buyPrice": 0.97, "quantity": 800, "buyDate": "2022-08-23", "currency": "SEK" },
+  { "ticker": "EMB.ST", "name": "EMB Mission Bound AB (publ)", "buyPrice": 1.895, "quantity": 100, "buyDate": "2022-05-13", "currency": "SEK" },
+  { "ticker": "EMB.ST", "name": "EMB Mission Bound AB (publ)", "buyPrice": 2.6, "quantity": 100, "buyDate": "2022-01-22", "currency": "SEK" },
   { "ticker": "NOVO-B.CO", "name": "Novo Nordisk", "buyPrice": 320.00, "quantity": 100, "buyDate": "2025-07-31", "currency": "DKK" }
 ]
