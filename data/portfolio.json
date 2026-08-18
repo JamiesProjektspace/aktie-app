@@ -1,9 +1,5 @@
 [
-  {
-    "ticker": "SOFI",
-    "name": "SoFi Technologies",
-    "buyPrice": 5.36,
-    "buyDate": "2022-06-13",
-    "currency": "USD"
-  }
+  { "ticker": "SOFI", "name": "SoFi Technologies", "buyPrice": 5.36, "quantity": 100, "buyDate": "2022-06-13", "currency": "USD" },
+  { "ticker": "SOFI", "name": "SoFi Technologies", "buyPrice": 12.00, "quantity": 100, "buyDate": "2022-02-14", "currency": "USD" },
+  { "ticker": "NOVO-B.CO", "name": "Novo Nordisk", "buyPrice": 320.00, "quantity": 100, "buyDate": "2025-07-31", "currency": "DKK" }
 ]
