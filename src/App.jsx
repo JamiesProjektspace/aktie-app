@@ -9,9 +9,11 @@ function App() {
   return (
     <div className="app">
       <h1>Mine aktier</h1>
-      {grouped.map(stock => (
-        <StockCard key={stock.ticker} {...stock} />
-      ))}
+      <div className="stock-list">
+        {grouped.map(stock => (
+          <StockCard key={stock.ticker} {...stock} />
+        ))}
+      </div>
     </div>
   )
 }

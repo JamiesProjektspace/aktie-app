@@ -1,5 +1,11 @@
 [
   { "ticker": "SOFI", "name": "SoFi Technologies", "buyPrice": 5.36, "quantity": 100, "buyDate": "2022-06-13", "currency": "USD" },
   { "ticker": "SOFI", "name": "SoFi Technologies", "buyPrice": 12.00, "quantity": 100, "buyDate": "2022-02-14", "currency": "USD" },
+  { "ticker": "QBTS", "name": "D-Wave Quantum Inc.", "buyPrice": 5.50, "quantity": 125, "buyDate": "2026-07-27", "currency": "USD" },
+  { "ticker": "IONQ", "name": "IonQ, Inc.", "buyPrice": 40.00, "quantity": 17, "buyDate": "2025-01-17", "currency": "USD" },
+  { "ticker": "QUBT", "name": "Quantum Computing Inc.", "buyPrice": 10.00, "quantity": 69, "buyDate": "2025-01-17", "currency": "USD" },
+  { "ticker": "RGTI", "name": "Rigetti Computing", "buyPrice": 10.00, "quantity": 69, "buyDate": "2025-01-17", "currency": "USD" },
+  { "ticker": "SPIR", "name": "Spirent Communications", "buyPrice": 8.88, "quantity": 75, "buyDate": "2023-08-31", "currency": "USD" },
+  { "ticker": "SPIR", "name": "Spirent Communications", "buyPrice": 5.00, "quantity": 25, "buyDate": "2023-09-21", "currency": "USD" },
   { "ticker": "NOVO-B.CO", "name": "Novo Nordisk", "buyPrice": 320.00, "quantity": 100, "buyDate": "2025-07-31", "currency": "DKK" }
 ]
