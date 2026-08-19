@@ -289,3 +289,82 @@ body {
   margin: 0 0 0.5rem !important;
   display: block !important;
 }
+
+.app {
+  min-height: 100vh;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+.app-options {
+  background: #170B22;
+}
+
+.app-options .stock-card {
+  background: #241531;
+  border-color: #3A2350;
+}
+
+.app-options .recommendation-headline {
+  background: rgba(192, 132, 252, 0.1);
+  border-left-color: #C084FC;
+}
+
+.app-options .tab.active {
+  border-color: #C084FC;
+}
+
+.option-type-badge {
+  display: inline-block !important;
+  width: auto !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem;
+  color: var(--color-muted) !important;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin: 0 0 0.75rem !important;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.field label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  opacity: 0.75;
+}
+
+.calculation-hint {
+  font-family: var(--font-mono);
+  color: var(--color-muted);
+  opacity: 0.6;
+  font-size: 0.85em;
+}

@@ -1,10 +1,14 @@
 import { useState, useRef } from 'react'
 import { searchStocks } from '../utils/stockApi'
 
-function AddStockForm({ onAdd }) {
+function AddOptionForm({ onAdd }) {
   const [ticker, setTicker] = useState('')
   const [name, setName] = useState('')
-  const [buyPrice, setBuyPrice] = useState('')
+  const [optionType, setOptionType] = useState('call')
+  const [position, setPosition] = useState('long')
+  const [strike, setStrike] = useState('')
+  const [expirationDate, setExpirationDate] = useState('')
+  const [premium, setPremium] = useState('')
   const [quantity, setQuantity] = useState('')
   const [buyDate, setBuyDate] = useState('')
   const [currency, setCurrency] = useState('USD')
@@ -54,14 +58,20 @@ function AddStockForm({ onAdd }) {
     await onAdd({
       ticker: ticker.toUpperCase(),
       name,
-      buyPrice: parseFloat(buyPrice),
+      optionType,
+      position,
+      strike: parseFloat(strike),
+      expirationDate,
+      premium: parseFloat(premium),
       quantity: parseFloat(quantity),
       buyDate,
       currency
     })
     setTicker('')
     setName('')
-    setBuyPrice('')
+    setStrike('')
+    setExpirationDate('')
+    setPremium('')
     setQuantity('')
     setBuyDate('')
     setSuggestions([])
@@ -91,15 +101,33 @@ function AddStockForm({ onAdd }) {
         )}
       </div>
       <div className="field">
-        <label>Navn</label>
-        <input placeholder="Firmanavn" value={name} onChange={e => setName(e.target.value)} required />
+        <label>Type</label>
+        <select value={optionType} onChange={e => setOptionType(e.target.value)}>
+          <option value="call">Call</option>
+          <option value="put">Put</option>
+        </select>
       </div>
       <div className="field">
-        <label>Indkøbspris</label>
-        <input type="number" step="0.01" placeholder="0.00" value={buyPrice} onChange={e => setBuyPrice(e.target.value)} required />
+        <label>Position</label>
+        <select value={position} onChange={e => setPosition(e.target.value)}>
+          <option value="long">Købt</option>
+          <option value="short">Solgt</option>
+        </select>
       </div>
       <div className="field">
-        <label>Antal</label>
+        <label>Strike</label>
+        <input type="number" step="0.01" placeholder="0.00" value={strike} onChange={e => setStrike(e.target.value)} required />
+      </div>
+      <div className="field">
+        <label>Udløbsdato</label>
+        <input type="date" value={expirationDate} onChange={e => setExpirationDate(e.target.value)} required />
+      </div>
+      <div className="field">
+        <label>Præmie pr. aktie</label>
+        <input type="number" step="0.01" placeholder="0.00" value={premium} onChange={e => setPremium(e.target.value)} required />
+      </div>
+      <div className="field">
+        <label>Antal kontrakter</label>
         <input type="number" step="1" placeholder="0" value={quantity} onChange={e => setQuantity(e.target.value)} required />
       </div>
       <div className="field">
@@ -114,9 +142,9 @@ function AddStockForm({ onAdd }) {
           <option value="EUR">EUR</option>
         </select>
       </div>
-      <button type="submit" disabled={submitting}>{submitting ? 'Tilføjer...' : 'Tilføj aktie'}</button>
+      <button type="submit" disabled={submitting}>{submitting ? 'Tilføjer...' : 'Tilføj option'}</button>
     </form>
   )
 }
 
-export default AddStockForm
+export default AddOptionForm
