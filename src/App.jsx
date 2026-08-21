@@ -3,12 +3,17 @@ import StockCard from './components/StockCard'
 import OptionCard from './components/OptionCard'
 import AddStockForm from './components/AddStockForm'
 import AddOptionForm from './components/AddOptionForm'
+import Login from './components/Login'
 import { groupPortfolio } from './utils/portfolio'
 import { getPurchases, addPurchase, deletePurchase } from './utils/portfolioApi'
 import { getOptions, addOption, deleteOption } from './utils/optionsApi'
+import { supabase } from './utils/supabaseClient'
 import './App.css'
 
 function App() {
+  const [session, setSession] = useState(null)
+  const [checkingSession, setCheckingSession] = useState(true)
+
   const [activeTab, setActiveTab] = useState('stocks')
 
   const [portfolio, setPortfolio] = useState([])
@@ -18,6 +23,19 @@ function App() {
   const [options, setOptions] = useState([])
   const [loadingOptions, setLoadingOptions] = useState(true)
   const [optionError, setOptionError] = useState(null)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session)
+      setCheckingSession(false)
+    })
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setSession(newSession)
+    })
+
+    return () => listener.subscription.unsubscribe()
+  }, [])
 
   async function loadPortfolio() {
     try {
@@ -42,9 +60,11 @@ function App() {
   }
 
   useEffect(() => {
-    loadPortfolio()
-    loadOptions()
-  }, [])
+    if (session) {
+      loadPortfolio()
+      loadOptions()
+    }
+  }, [session])
 
   async function handleAddStock(purchase) {
     await addPurchase(purchase)
@@ -66,11 +86,26 @@ function App() {
     await loadOptions()
   }
 
+  async function handleLogout() {
+    await supabase.auth.signOut()
+  }
+
+  if (checkingSession) {
+    return <div className="app"><p>Tjekker login...</p></div>
+  }
+
+  if (!session) {
+    return <Login />
+  }
+
   const grouped = groupPortfolio(portfolio)
 
   return (
     <div className={activeTab === 'options' ? 'app app-options' : 'app'}>
-      <h1>Mine investeringer</h1>
+      <div className="app-header">
+        <h1>Mine investeringer</h1>
+        <button className="logout-button" onClick={handleLogout}>Log ud</button>
+      </div>
 
       <div className="tabs">
         <button className={activeTab === 'stocks' ? 'tab active' : 'tab'} onClick={() => setActiveTab('stocks')}>
