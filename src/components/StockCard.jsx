@@ -3,6 +3,7 @@ import { fetchStock } from '../utils/stockApi'
 import { getRecommendation } from '../utils/recommendation'
 import { estimateParameters, runSimulation, computePercentiles, probabilityAboveCurrent } from '../utils/simulation'
 import PriceSimulation from './PriceSimulation'
+import InfoTooltip from './InfoTooltip'
 
 function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDelete }) {
   const [data, setData] = useState(null)
@@ -28,7 +29,7 @@ function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDe
   if (!data || !simulation) return <div className="stock-card">Henter {ticker}...</div>
 
   const gainPercent = ((data.currentPrice - gak) / gak) * 100
-  const recommendation = getRecommendation(gainPercent)
+  const recommendation = getRecommendation(gainPercent, simulation.probabilityIncrease)
 
   return (
     <div className="stock-card">
@@ -37,6 +38,7 @@ function StockCard({ ticker, name, currency, totalQuantity, gak, purchases, onDe
       <p className="recommendation-headline">
         <strong>{recommendation.label}</strong> — {recommendation.reason}
         {' '}({simulation.probabilityIncrease.toFixed(0)}% af simuleringerne forventer en højere kurs om en måned)
+        <InfoTooltip text="Anbefalingen kombinerer to ting: dit afkast ift. din indkøbspris (GAK), og en Geometrisk Brownsk Bevægelse-simulering af aktiens mulige kursudvikling. 'Overvej salg' vises kun, når BEGGE peger samme vej — du er oppe mindst 50%, OG simuleringen forventer overvejende fald. Er du oppe over 50%, men simuleringen faktisk forventer fortsat stigning, vises 'Behold' i stedet, med en begrundelse der nævner det. 'Overvej at vente' vises uafhængigt af simuleringen, hvis du er nede mindst 20%." />
       </p>
 
       <details>
