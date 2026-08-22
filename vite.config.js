@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { getStockData } from './api/stock.js'
-import { searchTickers } from './api/search.js'
+import { getStockData } from './api/_lib/stockService.js'
+import { searchTickers } from './api/_lib/searchService.js'
 
 export default defineConfig({
+  base: '/portfolio/',
   plugins: [
     react(),
     {

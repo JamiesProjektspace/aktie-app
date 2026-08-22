@@ -1,4 +1,4 @@
-import { searchTickers } from './_lib/searchService.js'
+import { getStockData } from '../_lib/stockService.js'
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -9,10 +9,10 @@ export default async function handler(req, res) {
     return
   }
 
-  const { q } = req.query
+  const { ticker } = req.query
   try {
-    const results = await searchTickers(q)
-    res.status(200).json(results)
+    const data = await getStockData(ticker)
+    res.status(200).json(data)
   } catch (err) {
     res.status(500).json({ error: err.message })
   }

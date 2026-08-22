@@ -2,7 +2,6 @@ import YahooFinance from 'yahoo-finance2'
 
 const yahooFinance = new YahooFinance({ suppressNotices: ['yahooSurvey'] })
 
-// Henter aktuel kurs, 1 års historik og analytiker-anbefaling for én aktie
 export async function getStockData(ticker) {
   const quote = await yahooFinance.quote(ticker)
 
